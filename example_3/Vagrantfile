@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Arbitrarily designate coney as slave; bring it up first.
+  config.vm.define "coney" do |coney|
+    coney.vm.box = "hashicorp/precise64"
+    coney.vm.hostname = "coney.example.com"
+    coney.vm.network "private_network", ip: "192.168.50.101"
+    coney.vm.provision :puppet do |puppet|
+      puppet.manifest_file = "init.pp"
+      puppet.module_path = "~/puppet/modules"
+      puppet.facter = { 'fqdn'  => coney.vm.hostname,
+                        'flags' => 'rabbitmq_slave'
+                      }
+    end
+  end
+
+  # rabbit is master; bring it up last, once slaves are up.
+  config.vm.define "rabbit" do |rabbit|
+    rabbit.vm.box = "hashicorp/precise64"
+    rabbit.vm.hostname = "rabbit.example.com"
+    rabbit.vm.network :forwarded_port, guest: 5672, host: 5672
+    rabbit.vm.network :forwarded_port, guest: 15672, host: 15672
+    rabbit.vm.network "private_network", ip: "192.168.50.100"
+    rabbit.vm.provision :puppet do |puppet|
+      puppet.manifest_file = "init.pp"
+      puppet.module_path = "~/puppet/modules"
+      puppet.facter = { 'fqdn'  => rabbit.vm.hostname,
+                        'flags' => 'rabbitmq_master'
+                      }
+    end
+  end
+end
