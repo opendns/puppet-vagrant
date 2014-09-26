@@ -53,7 +53,9 @@ context "rabbit" do
     end
   end
 
-  describe command('/vagrant/receive_once-mirrored.py') do
-    it { should return_stdout /Hello Mirror World!/ }
+  describe "Mirrored queue" do
+    describe command('/vagrant/receive_once-mirrored.py') do
+      it { should return_stdout /Hello Mirror World!/ }
+    end
   end
 end
