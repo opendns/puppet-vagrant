@@ -5,18 +5,46 @@ post FIXME, which can be found at FIXME.
 
 ## Requirements
 
-* [Vagrant](http://downloads.vagrantup.com/)
-* The Vagrant box "hashicorp/precise64"; it'll be installed
-  automagically if you don't have it already
-* ServerSpec, which implies a Ruby dev environment to run it in (I use
-  FIXME:link rbenv).
+* [Vagrant](http://downloads.vagrantup.com/).  In these examples I use
+  the Vagrant box "hashicorp/precise64"; it'll be installed
+  automagically if you don't have it already.
+* [ServerSpec](http://serverspec.org), which implies a Ruby dev
+  environment to run it in; for OS X, I use
+  [rbenv](https://github.com/sstephenson/rbenv).
+* The following modules from
+  [PuppetForge](https://forge.puppetlabs.com):
+
+  * [puppetlabs/rabbitmq](https://forge.puppetlabs.com/puppetlabs/rabbitmq)
+  * [puppetlabs/stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib)
+  * [puppetlabs/apt](https://forge.puppetlabs.com/puppetlabs/apt)
+  * [nanliu/staging](https://forge.puppetlabs.com/nanliu/staging)
+
+See "Preparing Puppet below for important notes on setup.
+
+## Preparing Puppet
+
+The Puppet modules are expected to be in "~/puppet/modules".  To
+prepare that, and to fetch dependencies, run these commands:
+
+```
+mkdir -p ~/puppet/modules
+cd ~/puppet/modules
+curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-stdlib-4.3.2.tar.gz | tar xvzf - 
+curl https://forgeapi.puppetlabs.com/v3/files/nanliu-staging-1.0.0.tar.gz | tar xvzf - 
+curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-rabbitmq-4.1.0.tar.gz | tar xvzf -
+curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-apt-1.6.0.tar.gz | tar xvzf -
+```
+
+Alternately, you can specify your own path to these modules by editing
+the Vagrantfile in the example directories, and changing
+"puppet.module_path" as appropriate.
 
 ## Examples
 
 * The example_1 directory simply tests Puppet code to install the
-rabbitmq-server package on a single VM.  This is pretty simple stuff,
-but it's a good demonstration of how simple it is to add tests right
-from the start.
+  rabbitmq-server package on a single VM.  This is pretty simple
+  stuff, but it's a good demonstration of how simple it is to add
+  configuration management right from the start.
 
 * The example_2 directory tests an installation of RabbitMQ using the
   FIXME:link Puppetlabs RabbitMQ module from Puppetforge.  It
