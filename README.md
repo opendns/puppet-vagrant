@@ -40,10 +40,11 @@ you have the right modules.
   configuration management right from the start.
 
 * The example_2 directory tests an installation of RabbitMQ using the
-  FIXME:link Puppetlabs RabbitMQ module from Puppetforge.  It
-  exercises a the server with couple of Python scripts (based on the
-  RabbitMQ documentation) that use FIXME:link Pika.  These scripts
-  send a message (send.py) and receive the message (receive_once.py).
+  Puppetlabs RabbitMQ module from Puppetforge.  It exercises a the
+  server with couple of Python scripts (based on the RabbitMQ
+  documentation) that use
+  [Pika](https://pika.readthedocs.org/en/0.9.14/).  These scripts send
+  a message (send.py) and receive the message (receive_once.py).
 
 * The example_3 directory is where we go to 11: it creates *two* VMs
   (rabbit and coney), each with their own private IP address; it
@@ -94,8 +95,8 @@ Second, getting serverspec to test two VMs turned out to be harder
 than I thought.  If I'm reading the serverspec documentation right, it
 should Just Work, but it seems to be running into problems with the
 way Vagrant displays SSH configuration for multiple machines.  I've
-FIXME:link reported this a bug, but in the meantime I've put a hack in
-example_3/spec/spec_helper.rb...it's nor pretty, but it seems to wor
+[reported this a bug](https://github.com/mitchellh/vagrant/issues/4478),
+but in the meantime I've put a hack in
+example_3/spec/spec_helper.rb...it's nor pretty, but it seems to work.
 around the problem.
 
-* Download and install
