@@ -3,6 +3,7 @@
 if [ -d ~/puppet/modules ] ; then
     echo "Whoops, looks like there's already ~/puppet/modules."
     echo "I don't want to cause any problems...edit this script if you want to force things."
+    exit
 fi
 
 mkdir -p ~/puppet/modules
