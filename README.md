@@ -97,6 +97,6 @@ should Just Work, but it seems to be running into problems with the
 way Vagrant displays SSH configuration for multiple machines.  I've
 [reported this a bug](https://github.com/mitchellh/vagrant/issues/4478),
 but in the meantime I've put a hack in
-example_3/spec/spec_helper.rb...it's nor pretty, but it seems to work.
+example_3/spec/spec_helper.rb...it's not pretty, but it seems to work.
 around the problem.
 
