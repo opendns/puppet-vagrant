@@ -24,20 +24,13 @@ See "Preparing Puppet below for important notes on setup.
 ## Preparing Puppet
 
 The Puppet modules are expected to be in "~/puppet/modules".  To
-prepare that, and to fetch dependencies, run these commands:
-
-```
-mkdir -p ~/puppet/modules
-cd ~/puppet/modules
-curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-stdlib-4.3.2.tar.gz | tar xvzf - 
-curl https://forgeapi.puppetlabs.com/v3/files/nanliu-staging-1.0.0.tar.gz | tar xvzf - 
-curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-rabbitmq-4.1.0.tar.gz | tar xvzf -
-curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-apt-1.6.0.tar.gz | tar xvzf -
-```
+prepare that, and to fetch dependencies, you can run setup_puppet.sh
+from this repo.
 
 Alternately, you can specify your own path to these modules by editing
 the Vagrantfile in the example directories, and changing
-"puppet.module_path" as appropriate.
+"puppet.module_path" as appropriate; it'll be up to you to make sure
+you have the right modules.
 
 ## Examples
 
