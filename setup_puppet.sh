@@ -12,7 +12,7 @@ curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-stdlib-4.3.2.tar.gz | t
 ln -s puppetlabs-stdlib-4.3.2 stdlib
 curl https://forgeapi.puppetlabs.com/v3/files/nanliu-staging-1.0.0.tar.gz | tar xvzf - 
 ln -s nanliu-staging-1.0.0 staging
-curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-rabbitmq-4.1.0.tar.gz | tar xvzf -
+curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-rabbitmq-4.0.0.tar.gz | tar xvzf -
 ln -s puppetlabs-rabbitmq-4.0.0 rabbitmq
 curl https://forgeapi.puppetlabs.com/v3/files/puppetlabs-apt-1.6.0.tar.gz | tar xvzf -
 ln -s puppetlabs-apt-1.6.0 apt
