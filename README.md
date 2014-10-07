@@ -100,3 +100,13 @@ but in the meantime I've put a hack in
 example_3/spec/spec_helper.rb...it's not pretty, but it seems to work
 around the problem.
 
+## A note about Puppet and module versions
+
+In these examples, the version of Puppet that comes with the Vagrant
+boxes we use is 2.7.  That's old, but to simplify things I stuck with
+it.  One constraint this added was in the RabbitMQ module:  version
+4.0.0 worked fine, but 4.1.0 did not, and gave this error:
+
+```
+==> rabbit: Could not autoload rabbitmq_exchange: Could not autoload /tmp/vagrant-puppet-2/modules-0/puppetlabs-rabbitmq-4.1.0/lib/puppet/provider/rabbitmq_exchange/rabbitmqadmin.rb: undefined method `has_command' for Puppet::Type::Rabbitmq_exchange::ProviderRabbitmqadmin:Class at /tmp/vagrant-puppet-2/modules-0/rabbitmq/manifests/init.pp:174 on node rabbit.example.com
+````
