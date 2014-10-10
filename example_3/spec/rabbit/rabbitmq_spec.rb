@@ -2,7 +2,7 @@ require 'spec_helper'
 
 context "rabbit" do
   describe command('hostname') do
-    it { should return_stdout('rabbit') }
+    its(:stdout) { should match('rabbit') }
   end
 
   describe "Services" do
@@ -28,34 +28,34 @@ context "rabbit" do
 
   describe "Cluster status" do
     describe command('/usr/sbin/rabbitmqctl cluster_status | grep running_nodes') do
-      it { should return_stdout /running_nodes/ }
-      it { should return_stdout /rabbit@coney/ }
-      it { should return_stdout /rabbit@rabbit/ }
+      its(:stdout) { should match /running_nodes/ }
+      its(:stdout) { should match /rabbit@coney/ }
+      its(:stdout) { should match /rabbit@rabbit/ }
     end
   end
 
   describe "Non-mirrored queue" do
     describe "localhost" do
       describe command('/vagrant/send.py -s localhost') do
-        it { should return_stdout /\[x\] Sent 'Hello World!'/ }
+        its(:stdout) { should match /\[x\] Sent 'Hello World!'/ }
       end
       describe command('/vagrant/receive_once.py -s localhost') do
-        it { should return_stdout /Hello World!/ }
+        its(:stdout) { should match /Hello World!/ }
       end
     end
     describe "Coney" do
       describe command('/vagrant/send.py -s coney') do
-        it { should return_stdout /\[x\] Sent 'Hello World!'/ }
+        its(:stdout) { should match /\[x\] Sent 'Hello World!'/ }
       end
       describe command('/vagrant/receive_once.py -s coney') do
-        it { should return_stdout /Hello World!/ }
+        its(:stdout) { should match /Hello World!/ }
       end
     end
   end
 
   describe "Mirrored queue" do
     describe command('/vagrant/receive_once-mirrored.py') do
-      it { should return_stdout /Hello Mirror World!/ }
+      its(:stdout) { should match /Hello Mirror World!/ }
     end
   end
 end

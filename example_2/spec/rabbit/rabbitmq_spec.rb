@@ -20,9 +20,9 @@ describe port(5672) do
 end
 
 describe command('/vagrant/send.py -s localhost') do
-  it { should return_stdout /\[x\] Sent 'Hello World!'/ }
+  its(:stdout) { should match /\[x\] Sent 'Hello World!'/ }
 end
 
 describe command('/vagrant/receive_once.py -s localhost') do
-  it { should return_stdout /Hello World!/ }
+  its(:stdout) { should match /Hello World!/ }
 end
