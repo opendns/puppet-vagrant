@@ -58,48 +58,6 @@ you have the right modules.
   terms to use for this kind of mirroring).  The tests run on *both*
   VMs.
 
-## A note about ServerSpec
-
-There were a few things I tripped over with ServerSpec that are worth
-noting.
-
-First off, I kept getting a deprecation warning that looked like this:
-
-```
-Deprecation Warnings:
-
-`metadata[:example_group_block]` is deprecated. Use `metadata[:block]`
-instead. Called from spec/spec_helper.rb:16:in `yield'.
-
-```
-
-This was with the spec files as created by `serverspec-init`.  The
-warning seems to be harmless, but I followed its advice and changed it
-like so:
-
-```
---- spec-dist/spec_helper.rb	2014-10-06 11:42:40.000000000 -0700
-+++ spec/spec_helper.rb	2014-10-06 11:45:15.000000000 -0700
-@@ -13,7 +13,7 @@
-     c.sudo_password = ENV['SUDO_PASSWORD']
-   end
-   c.before :all do
--    block = self.class.metadata[:example_group_block]
-+    block = self.class.metadata[:block]
-     if RUBY_VERSION.start_with?('1.8')
-       file = block.to_s.match(/.*@(.*):[0-9]+>/)[1]
-     else
- ````
-
-Second, getting serverspec to test two VMs turned out to be harder
-than I thought.  If I'm reading the serverspec documentation right, it
-should Just Work, but it seems to be running into problems with the
-way Vagrant displays SSH configuration for multiple machines.  I've
-[reported this a bug](https://github.com/mitchellh/vagrant/issues/4478),
-but in the meantime I've put a hack in
-example_3/spec/spec_helper.rb...it's not pretty, but it seems to work
-around the problem.
-
 ## A note about Puppet and module versions
 
 In these examples, the version of Puppet that comes with the Vagrant
