@@ -27,7 +27,7 @@ context "coney" do
   end
 
   describe "Cluster status" do
-    describe command('/usr/sbin/rabbitmqctl cluster_status | grep running_nodes') do
+    describe command('/usr/sbin/rabbitmqctl cluster_status | /bin/grep running_nodes') do
       its(:stdout) { should match /running_nodes/ }
       its(:stdout) { should match /rabbit@coney/ }
       its(:stdout) { should match /rabbit@rabbit/ }
