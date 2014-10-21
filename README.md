@@ -19,7 +19,7 @@ post FIXME, which can be found at FIXME.
   * [puppetlabs/apt](https://forge.puppetlabs.com/puppetlabs/apt)
   * [nanliu/staging](https://forge.puppetlabs.com/nanliu/staging)
 
-See "Preparing Puppet below for important notes on setup.
+See "Preparing Puppet" below for important notes on setup.
 
 ## Preparing Puppet
 
@@ -62,9 +62,14 @@ you have the right modules.
 
 In these examples, the version of Puppet that comes with the Vagrant
 boxes we use is 2.7.  That's old, but to simplify things I stuck with
-it.  One constraint this added was in the RabbitMQ module:  version
+it.  One constraint this added was in the RabbitMQ module;  version
 4.0.0 worked fine, but 4.1.0 did not, and gave this error:
 
 ```
 ==> rabbit: Could not autoload rabbitmq_exchange: Could not autoload /tmp/vagrant-puppet-2/modules-0/puppetlabs-rabbitmq-4.1.0/lib/puppet/provider/rabbitmq_exchange/rabbitmqadmin.rb: undefined method `has_command' for Puppet::Type::Rabbitmq_exchange::ProviderRabbitmqadmin:Class at /tmp/vagrant-puppet-2/modules-0/rabbitmq/manifests/init.pp:174 on node rabbit.example.com
 ````
+
+This
+[has been filed as a bug](https://tickets.puppetlabs.com/browse/MODULES-1411),
+but as of October 2014 a new version of that module hasn't been
+released...so stick with 4.0.0.
