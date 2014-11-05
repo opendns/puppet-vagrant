@@ -26,7 +26,7 @@ See "Preparing Puppet" below for important notes on setup.
 
 The Puppet modules are expected to be in "~/puppet/modules".  To
 prepare that, and to fetch dependencies, you can run setup_puppet.sh
-from this repo.
+from this git repo.
 
 Alternately, you can specify your own path to these modules by editing
 the Vagrantfile in the example directories, and changing
