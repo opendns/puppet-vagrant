@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Testing Puppet modules with Serverspec and Vagrant
 
 This repo contains the code samples for the OpenDNS Engineering blog
@@ -77,4 +76,3 @@ released...so stick with 4.0.0.
 =======
 puppet-vagrant
 ==============
->>>>>>> 3e7d04f6bf6c8ce7f39ed2319c2190717d130f56
