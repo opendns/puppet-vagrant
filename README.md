@@ -72,7 +72,5 @@ it.  One constraint this added was in the RabbitMQ module;  version
 This
 [has been filed as a bug](https://tickets.puppetlabs.com/browse/MODULES-1411),
 but as of October 2014 a new version of that module hasn't been
-released...so stick with 4.0.0.
-=======
-puppet-vagrant
-==============
+released - so stick with 4.0.0.
+
