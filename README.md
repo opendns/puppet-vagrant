@@ -1,7 +1,7 @@
 # Testing Puppet modules with Serverspec and Vagrant
 
 This repo contains the code samples for the OpenDNS Engineering blog
-post FIXME, which can be found at FIXME.
+post "Testing Puppet modules with Vagrant and ServerSpec", which can be found [here](http://engineering.opendns.com/2014/11/05/testing-puppet-modules-vagrant-serverspec/).
 
 ## Requirements
 
